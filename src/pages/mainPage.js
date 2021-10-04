@@ -23,7 +23,7 @@ const Layout = () => {
     <div className="main-page">
       <Container className="nav">
         <Container>
-          <Navbar expand="lg" >
+          <Navbar expand="lg" collapseOnSelect={true} >
             <Navbar.Brand href="#home" className="logo">We Travelers</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
