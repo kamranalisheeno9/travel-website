@@ -63,6 +63,14 @@ const SignUp = (props) => {
               </ListGroup>
               <Card.Body>
                 <Form onSubmit={formik.handleSubmit}>
+
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <TextField type="text" name="firstName" placeholder="First Name" />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <TextField type="text" name="lastName" placeholder="Last Name" />
+                  </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <TextField type="email" name="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
@@ -78,15 +86,7 @@ const SignUp = (props) => {
                   </Form.Group>
 
                   <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <TextField type="text" name="firstName" placeholder="First Name" />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <TextField type="text" name="lastName" placeholder="Last Name" />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <TextField type="text" name="number" placeholder="Number" />
+                    <TextField type="text" name="number" placeholder="Phone Number" />
                   </Form.Group>
                   <div className="btn-submit">
                     <Button variant="dark" type="submit" >

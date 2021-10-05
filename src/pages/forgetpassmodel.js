@@ -11,12 +11,11 @@ const Forgetpassmodel = (props) => {
 
     const [show, setShow] = useState(false);
 
-    const handleClose = (email,oldpassword,newpassword) =>  {
-        {email == "" || oldpassword == "" || newpassword == "" ? setShow(true) : setShow(false) }
-        
+    const handleClose = (email,newpassword) =>  {
+        setShow(false)
         
     }
-    const handleShow = (email,oldpass,newpass) => {
+    const handleShow = (email,newpass) => {
         setShow(true)
         
         
@@ -25,9 +24,6 @@ const Forgetpassmodel = (props) => {
        
         email: yup.string()
           .email('Email is Invalid')
-          .required('Required'),
-        oldPassword: yup.string()
-          .min(6, 'Password Must Be At Least 6 Characters')
           .required('Required'),
             newPassword: yup.string()
           .min(6, 'Password Must Be At Least 6 Characters')
@@ -39,13 +35,11 @@ const Forgetpassmodel = (props) => {
         <Formik
         initialValues={{
           email: '',
-          oldPassword: '',
           newPassword: '',
         }}
         onSubmit={values => {
-            {values.email ="" || values.oldPassword == "" || values.newPassword == "" ? 
+            {values.email ="" || values.newPassword == "" ? 
             values.email ="" &&
-            values.oldPassword =="" &&
             values.newPassword =="" 
             :
 
@@ -62,7 +56,7 @@ const Forgetpassmodel = (props) => {
       {formik => (
           
           <>
-            <a variant="primary" className="forget-password" onClick={()=>handleShow(formik.values.email,formik.values.oldPassword,formik.values.newPassword)}>
+            <a variant="primary" className="forget-password" onClick={()=>handleShow(formik.values.email,formik.values.newPassword)}>
                 Forget Password
             </a>
 
@@ -90,10 +84,6 @@ const Forgetpassmodel = (props) => {
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <TextField type="email" name="email" placeholder="Email" />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <TextField type="password" name="oldPassword" placeholder="Old Password" />
-                  </Form.Group>
-
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <TextField type="password" name="newPassword" placeholder="New Password" />
                   </Form.Group>
