@@ -4,9 +4,17 @@ import { Container, Card, Form, Button } from 'react-bootstrap';
 import TextField from './textField'
 import { Formik } from 'formik';
 import * as yup from 'yup';
-
+import Forgetpassmodel from './forgetpassmodel';
+import { useState } from 'react';
 
 const SignUp = () => {
+
+    const [currentUser,setCurrentUser]=useState({})
+
+    const [modalShow, setModalShow] = useState(false);
+
+
+
     const Validate = yup.object({
         email: yup.string()
             .email('Email is Invalid')
@@ -23,12 +31,18 @@ const SignUp = () => {
                 email: '',
                 password: '',
             }}
+            onSubmit={values => {
+    
+   
+                setCurrentUser(values)
+                alert("Logged In");
+              
+            }}
+            
             validationSchema={Validate}
 
         >
             {formik => (
-                <div className="">
-
 
                     <Container className="login-container">
                         <Card style={{ width: '18rem', }}>
@@ -37,11 +51,15 @@ const SignUp = () => {
 
                             </Card.Body>
                             <Card.Body>
-                                <Form>
+                                <Form onSubmit={formik.handleSubmit}>
                                     <Form.Group className="mb-3 email" controlId="formBasicEmail">
                                         <TextField type="email" name="email" placeholder="Enter email" />
-                                        <Form.Text className="text-muted">
-                                            Comment Here
+                                        <Form.Text className="">
+                                
+                                            <Forgetpassmodel 
+                                            show={modalShow}
+                                            onHide={() => setModalShow(false)}
+                                            />
                                         </Form.Text>
                                     </Form.Group>
 
@@ -62,7 +80,7 @@ const SignUp = () => {
                         </Card>
 
                     </Container>
-                </div>
+        
             )}
 
         </Formik>

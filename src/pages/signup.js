@@ -5,7 +5,12 @@ import TextField from './textField'
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useState } from 'react';
-const SignUp = () => {
+const SignUp = (props) => {
+
+
+
+
+
   const Validate = yup.object({
     firstName: yup.string()
       .max(15, 'Must Be 15 Characters or Less')
@@ -23,7 +28,7 @@ const SignUp = () => {
       .required('Required'),
   })
 
-  const [submitCheck, setSubmitCheck] = useState(false)
+  const [users, setUsers] = useState([])
 
 
   return (
@@ -35,11 +40,18 @@ const SignUp = () => {
         password: '',
         number: '',
       }}
+      onSubmit={values => {
+        users.push(values)
+        setUsers([...users])
+        props.setShow(true)
+        alert("Account Registered");
+       
+    }}
+
       validationSchema={Validate}
     >
 
       {formik => (
-        <div className="">
 
           <Container className="login-container">
             <Card style={{ width: '18rem', }}>
@@ -50,7 +62,7 @@ const SignUp = () => {
               <ListGroup className="list-group-flush">
               </ListGroup>
               <Card.Body>
-                <Form>
+                <Form onSubmit={formik.handleSubmit}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <TextField type="email" name="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
@@ -77,7 +89,7 @@ const SignUp = () => {
                     <TextField type="text" name="number" placeholder="Number" />
                   </Form.Group>
                   <div className="btn-submit">
-                    <Button variant="dark" type={`${formik.values.firstName !== "" && formik.values.lastName !== "" && formik.values.email !== "" && formik.values.password !== "" && formik.values.number !== "" ? " submit " : ""} `}>
+                    <Button variant="dark" type="submit" >
                       Sign Up
                     </Button>
                   </div>
@@ -86,7 +98,6 @@ const SignUp = () => {
             </Card>
 
           </Container>
-        </div>
       )}
 
     </Formik>

@@ -51,7 +51,7 @@ const Layout = () => {
           </Col>
           <Col xs={12} sm={6} md={5} className="login-signup">
             <div className={`${display ? " hidden " : " sign-up"} `}>
-              <SingUp />
+              <SingUp show={display} setShow={setDisplay} />
             </div>
             <div className={`${display ? "login" : "hidden"} `}>
               <Login />
