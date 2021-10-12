@@ -6,6 +6,7 @@ import { Container, Row, Col,Card,ListGroup } from 'react-bootstrap';
 const PackageCard =(props)=> {
     return (
         <Container >
+        <p className="gallery-titles">Best Selling Packages</p>
             <Row className="justify-content-around">
             <Col lg={3} sm={6} >
         <Container className="card-package">
