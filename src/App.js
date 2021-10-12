@@ -1,9 +1,9 @@
 import './App.css';
-import LoginLayout from './pages/mainPage'
+import HomePage from './pages/homepage'
 function App() {
   return (
     <div className="App">
-     <LoginLayout />
+     <HomePage />
     </div>
   );
 }
